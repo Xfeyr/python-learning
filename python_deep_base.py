@@ -801,6 +801,44 @@ make_image():
 """
 
 # =============================================================================
+# 18. РАБОТА С ИЗОБРАЖЕНИЯМИ (Pillow)
+# =============================================================================
+"""
+Pillow (PIL) — библиотека для обработки изображений.
+Установка: pip install Pillow
+
+Основные операции:
+    from PIL import Image, ImageFilter
+    
+    img = Image.open("file.png")          # открыть
+    
+    # Размер
+    img.size                               # (ширина, высота)
+    img.width, img.height                  # отдельно
+    
+    # Изменение размера
+    small = img.resize((w, h))             # новый размер
+    
+    # Поворот
+    rotated = img.rotate(45, expand=True)  # expand=True — не обрезать
+    
+    # Отражение
+    flipped = img.transpose(Image.FLIP_LEFT_RIGHT)   # по горизонтали
+    flipped = img.transpose(Image.FLIP_TOP_BOTTOM)   # по вертикали
+    
+    # Чёрно-белое
+    bw = img.convert("L")                  # "L" = grayscale
+    
+    # Фильтры
+    blurred = img.filter(ImageFilter.BLUR)
+    sharp = img.filter(ImageFilter.SHARPEN)
+    edges = img.filter(ImageFilter.FIND_EDGES)
+    
+    # Сохранение
+    img.save("new.png")
+"""
+
+# =============================================================================
 # ИТОГО: что ты знаешь
 # =============================================================================
 """
@@ -824,4 +862,5 @@ make_image():
 ✅ Асинхронный HTTP-сервер — сокеты, select, неблокирующий I/O
 ✅ Отправка email — smtplib, HTML-письма, пароли приложений
 ✅ QR-коды — генерация (qrcode) и чтение (opencv)
+✅ Pillow — изменение размера, поворот, отражение, ч/б, фильтры
 """
